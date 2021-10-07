@@ -1,0 +1,11 @@
+h1 {
+    text-align: center;
+}
+
+#snake-game {
+    position: relative;
+    margin: auto;
+    background-color: black;
+    width: 400px;
+    height: 400px;
+}
