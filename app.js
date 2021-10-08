@@ -9,14 +9,6 @@ const SNAKESEGMENTSIZE = 10;
 
 let snakeGame = document.getElementById("snake-game");
 
-let snakeSegmentExample = {x:10, y:10, dir: "right"};
-let snakeSegmentExample2 = {x:20, y:10, dir: "right"};
-let snakeSegmentExample3 = {x:30, y:10, dir: "right"};
-
-let snakeExample = [snakeSegmentExample3, snakeSegmentExample2, snakeSegmentExample];
-// let snakeExample = [snakeSegmentExample];
-console.log(snakeExample) // this is not logging what it should when the moveSnake is called in main
-
 // SnakeSegment -> 
 // renders the snake segment as a div in the HTML
 function renderSnakeSegment(snakeSegment){
@@ -64,13 +56,12 @@ function moveSnakeSegment(snakeSegment){
 }
 
 // Snake -> Snake
-// adds a new segment onto the beginning of the snake
-// by calling the moveSnakeSegment function on the first segment
+// adds a new segment onto the beginning of the snake,
+// the new segment being the first segment moved once forward,
 // and removes the last segment of the snake to make a new snake
 function moveSnake(snake){
-    let firstSegment = snake[0]
-    console.log(firstSegment);
-    let movedFirstSegment = moveSnakeSegment(firstSegment);
+    const firstSegment = JSON.parse(JSON.stringify(snake[0]))
+    const movedFirstSegment = moveSnakeSegment(firstSegment);
     snake.unshift(movedFirstSegment);
     snake.pop();
     return snake;
@@ -112,28 +103,25 @@ function addKeyHandler(snake){
     return snake;
 }
 
+
+console.log(moveSnake([ {x:40, y:40, dir:"right"}, {x:30, y:40, dir:"right"} ]))
+
+let mainSnake = [ {x:40, y:40, dir:"right"}, {x:30, y:40, dir:"right"} ]
+
 function main(snake){
-    // let intervalId = setInterval( () => {
-    //     // console.log(snake);
-    //     renderSnake(snake);
-    //     // snake = addKeyHandler(snake);
-    //     console.log(snake);
-    //     snake = moveSnake(snake);
-    //     if (gameOver(snake)){
-    //         clearInterval(intervalId);
-    //     }
-    // }, 2000)
-    renderSnake(snake);
-    snake = moveSnake(snake);
-    // renderSnake(snake);
-    // snake = moveSnake(snake);
-    // renderSnake(snake);
-    // snake = moveSnake(snake);
-    
-    
+    setInterval( function() {
+        renderSnake(snake);
+        snake = addKeyHandler(snake);
+        snake = moveSnake(snake);
+        
+    }, 1000)
 }
 
-// renderSnakeSegment(snakeSegmentExample);
-// renderSnakeSegment(moveSnakeSegment(snakeSegmentExample));
+main(mainSnake);
 
-main(snakeExample);
+try {
+exports.moveSnakeSegment = moveSnakeSegment
+exports.moveSnake = moveSnake
+} catch {
+    console.log("exports is not defined when run in the browser")
+}
