@@ -11,7 +11,7 @@
 // A Snake is an Array of SnakeSegments
 
 // SNAKEGAMESIZE/SNAKESEGMENTSIZE should be a whole number
-const SNAKESEGMENTSIZE = 40;
+const SNAKESEGMENTSIZE = 20;
 const SNAKEGAMESIZE = 400;
 
 // set up the div which is the container for the snake and foods
