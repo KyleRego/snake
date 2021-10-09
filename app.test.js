@@ -14,6 +14,8 @@ let snakeSegmentExample6 = {x:40, y:50, dir: "left"};
 let snakeSegmentExample7 = {x:50, y:50, dir: "up"};
 let snakeSegmentExample8 = {x:50, y:40, dir: "up"};
 
+// these first 5 tests will fail unless SNAKESEGMENTSIZE === 10
+
 test('moveSnakeSegment towards the right', () => {
     expect(app.moveSnakeSegment(snakeSegmentExample1)).toStrictEqual(snakeSegmentExample2);
 })
@@ -62,4 +64,16 @@ let snakeEx3 = [ {x:20, y:20, dir:"right"}, {x:10, y:20, dir:"right"}, {x:20, y:
 
 test('overItself basic test 1', () => {
     expect(app.overItself(snakeEx3)).toBe(true);
+})
+
+let snakeEx4 = [ {x:10, y:10, dir: "right"}];
+let snakeEx5 = [ {x: 20, y:20, dir:"left"}, {x:30, y:20, dir:"left"}];
+let foodEx1 = {x:10, y:10};
+
+test('snakeOverFood basic test 1', () => {
+    expect(app.snakeOverFood(snakeEx4, foodEx1)).toBe(true);
+})
+
+test('snakeOverFood basic test 2', () => {
+    expect(app.snakeOverFood(snakeEx5, foodEx1)).toBe(false);
 })

@@ -1,12 +1,4 @@
 h1 {
     text-align: center;
-    color: green;
-}
-
-#snake-game {
-    position: relative;
-    margin: auto;
-    background-color: black;
-    width: 400px;
-    height: 400px;
+    color: black;
 }
