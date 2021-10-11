@@ -3,7 +3,7 @@
  */
 
 const { test, expect } = require('@jest/globals');
-const app = require('./app')
+const app = require('./src/app.js')
 
 let snakeSegmentExample1 = {x:10, y:10, dir: "right"};
 let snakeSegmentExample2 = {x:20, y:10, dir: "right"};
