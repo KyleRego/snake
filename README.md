@@ -5,4 +5,4 @@ While working through the [snake game section of HTDP](https://htdp.org/2021-5-4
 
 What is left to be improved is that the food may spawn over the snake currently, and some tests only pass when the constants are set to certain values.
 
-To play this snake game, put index.html, style.css, and app.js into a folder and open index.html in a browser.
+To play this snake game, put index.html, style.css, and app.js from src into a folder and open index.html in a browser.
